@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from '@/layouts/Layout.astro';
 ---
 
 <Layout>
-	<Welcome />
+  <header>
+    <h1>David Dulce</h1>
+    <p>Software Engineer | Telematics Student | Innovator</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate software engineer with experience in web, mobile,
+      backend, IoT, and cloud computing. I enjoy solving complex problems and
+      building efficient, scalable solutions.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Go2Night</h3>
+        <p>Nightlife platform to support all of your needs.</p>
+      </div>
+      <div class="project-card">
+        <h3>Crumbly</h3>
+        <p>Financial dashboard SaaS for bakeries and entrepreneurs.</p>
+      </div>
+      <div class="project-card">
+        <h3>Finance tools</h3>
+        <p>Finance tooling compilation for people and FinOps.</p>
+      </div>
+      <div class="project-card">
+        <h3>Secrets</h3>
+        <p>Dirt cheap secrets management for developers.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Get in touch with me through any of these platforms:</p>
+    <div class="contact-links">
+      <a href="mailto:contact@ddulce.app">Email</a>
+      <a href="https://github.com/arkantrust" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/david-dulce" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 David Dulce. All Rights Reserved.</p>
+  </footer>
 </Layout>
