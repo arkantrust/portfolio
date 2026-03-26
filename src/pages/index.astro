@@ -5,20 +5,18 @@ import Layout from '@/layouts/Layout.astro';
 <Layout>
   <header>
     <h1>David Dulce</h1>
-    <p>Software Engineer | Telematics Student | Innovator</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <p>Software Engineer | Eternal Student | Innovator</p>
   </header>
 
   <section id="about">
-    <h2>About Me</h2>
+    <h2>Who am I?</h2>
     <p>
-      I'm a passionate software engineer with experience in web, mobile,
-      backend, IoT, and cloud computing. I enjoy solving complex problems and
-      building efficient, scalable solutions.
+      I'm a passionate builder and full-stack software engineer with experience
+      in web, mobile, backend, IoT, and cloud computing. I enjoy taking systems
+      from idea to production. Specialized in backend development with Go,
+      relational databases, and cloud infrastructure. Passionate about
+      high-performance systems and real-time data processing in fast-paced
+      startup environments.
     </p>
   </section>
 
@@ -26,35 +24,46 @@ import Layout from '@/layouts/Layout.astro';
     <h2>Projects</h2>
     <div class="projects">
       <div class="project-card">
-        <h3>Go2Night</h3>
+        <a href="https://go2night.ddulce.app" target="_blank"
+          ><h3>Go2Night</h3></a
+        >
         <p>Nightlife platform to support all of your needs.</p>
       </div>
       <div class="project-card">
-        <h3>Crumbly</h3>
+        <a href="https://personas.ddulce.app" target="_blank"
+          ><h3>Personas</h3></a
+        >
+        <p>
+          Create and manage beautiful example users to validate your target
+          user.
+        </p>
+      </div>
+      <div class="project-card">
+        <a href="https://crumbly.ddulce.app" target="_blank"><h3>Crumbly</h3></a
+        >
         <p>Financial dashboard SaaS for bakeries and entrepreneurs.</p>
       </div>
       <div class="project-card">
-        <h3>Finance tools</h3>
-        <p>Finance tooling compilation for people and FinOps.</p>
-      </div>
-      <div class="project-card">
-        <h3>Secrets</h3>
-        <p>Dirt cheap secrets management for developers.</p>
+        <a href="https://envshare.ddulce.app" target="_blank"
+          ><h3>EnvShare</h3></a
+        >
+        <p>Share your environment variables securely using AES-GCM for free.</p>
       </div>
     </div>
+    <p>
+      Check out some POCs, prototypes and WIPs on my{' '}<a
+        href="https://github.com/arkantrust"
+        target="_blank">GitHub</a
+      >!
+    </p>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Get in touch with me through any of these platforms:</p>
+    <p>Get in touch with me to greet me, ask questions, or collaborate:</p>
     <div class="contact-links">
-      <a href="mailto:contact@ddulce.app">Email</a>
-      <a href="https://github.com/arkantrust" target="_blank">GitHub</a>
+      <a href="mailto:david_dulce@ieee.org">Email</a>
       <a href="https://linkedin.com/in/david-dulce" target="_blank">LinkedIn</a>
     </div>
   </section>
-
-  <footer>
-    <p>© 2025 David Dulce. All Rights Reserved.</p>
-  </footer>
 </Layout>

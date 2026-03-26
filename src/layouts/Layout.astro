@@ -6,141 +6,125 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>David Dulce</title>
-    <script is:inline>
-      // Optional smooth scroll for older browsers
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          document
-            .querySelector(this.getAttribute('href'))
-            .scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-    </script>
+    <meta name="description" content="Builder and full-stack software engineer." />
   </head>
+
   <body>
     <slot />
   </body>
+
+  <style is:global>
+    :root {
+      --color-bg: #0f0f0f;
+      --color-text: #e0e0e0;
+      --color-text-muted: #888;
+      --color-text-dark: #666;
+      --color-accent: #26afcd;
+      --color-accent-hover: #00d4ff;
+      --color-border: #222;
+      --color-card-bg: #1a1a1a;
+      --color-card-bg-hover: #222;
+    }
+
+    /* --- Reset --- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--color-accent-hover);
+    }
+
+    /* --- Layout --- */
+    header {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--color-text-muted);
+    }
+
+    section {
+      max-width: 800px;
+      margin: 3rem auto;
+      margin-top: 0.5rem;
+      padding: 0 1rem;
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-accent);
+      text-align: center;
+    }
+
+    /* --- Projects --- */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--color-card-bg);
+      padding: 1rem;
+      border-radius: 10px;
+      transition:
+        transform 0.3s,
+        background 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      background: var(--color-card-bg-hover);
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card a {
+      color: var(--color-text);
+    }
+
+    .project-card:hover a {
+      color: var(--color-accent-hover);
+    }
+
+    /* --- Contact --- */
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-links a {
+      font-size: 1.2rem;
+    }
+  </style>
 </html>
-
-<style is:global>
-  /* --- Reset --- */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  /* html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  } */
-
-  body {
-    background: #0f0f0f;
-    color: #e0e0e0;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-  }
-
-  a {
-    color: #64ffda;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  a:hover {
-    color: #00bfa6;
-  }
-
-  /* --- Layout --- */
-  header {
-    padding: 2rem;
-    text-align: center;
-    border-bottom: 1px solid #222;
-  }
-
-  header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  header p {
-    color: #888;
-  }
-
-  nav {
-    margin-top: 1rem;
-  }
-
-  nav a {
-    margin: 0 1rem;
-    font-size: 1rem;
-    color: #e0e0e0;
-  }
-
-  section {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-  }
-
-  section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #64ffda;
-    text-align: center;
-  }
-
-  /* --- Projects --- */
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .project-card {
-    background: #1a1a1a;
-    padding: 1rem;
-    border-radius: 10px;
-    transition:
-      transform 0.3s,
-      background 0.3s;
-    cursor: pointer;
-  }
-
-  .project-card:hover {
-    transform: translateY(-5px);
-    background: #222;
-  }
-
-  .project-card h3 {
-    margin-bottom: 0.5rem;
-  }
-
-  /* --- Contact --- */
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .contact-links a {
-    font-size: 1.2rem;
-  }
-
-  /* --- Footer --- */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
-    color: #666;
-    border-top: 1px solid #222;
-    margin-top: 3rem;
-  }
-</style>
