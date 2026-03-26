@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSH Guide | David Dulce</title>
+  </head>
+
+  <script>
+    const copyButtons = document.querySelectorAll('.copy-button');
+
+    const copyText = async (button: Element, text: string) => {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+      }
+
+      button.textContent = 'Copied!';
+      setTimeout(() => {
+        button.textContent = 'Copy';
+      }, 2000);
+    };
+
+    copyButtons.forEach(async (button) => {
+      const targetId = button.getAttribute('data-clipboard-target');
+      console.log('Target ID: ', targetId);
+      if (!targetId) return;
+      const target = document.querySelector(targetId);
+      console.log('Target element: ', target);
+      if (!target) return;
+      const cmd = target.textContent.trim();
+
+      button.addEventListener('click', () => copyText(button, cmd));
+    });
+  </script>
+
+  <body>
+    <div class="container">
+      <h1>Generating SSH Keys</h1>
+
+      <h2>General Steps</h2>
+      <ol>
+        <li>Check for existing keys.</li>
+        <li>Create SSH keys.</li>
+        <li>Run agent.</li>
+        <li>Add SSH key to agent.</li>
+        <li>Copy SSH public key.</li>
+        <li>Test connection.</li>
+      </ol>
+
+      <h2>Linux</h2>
+      <ul>
+        <li>
+          <code id="linux-cmd-1">
+            ls -al ~/.ssh
+            <button class="copy-button" data-clipboard-target="#linux-cmd-1">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="linux-cmd-2">
+            ssh-keygen -t ed25519 -C "email@example.com"
+            <button class="copy-button" data-clipboard-target="#linux-cmd-2">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="linux-cmd-3">
+            eval "$(ssh-agent -s)"
+            <button class="copy-button" data-clipboard-target="#linux-cmd-3">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="linux-cmd-4">
+            ssh-add ~/.ssh/id_ed25519
+            <button class="copy-button" data-clipboard-target="#linux-cmd-4">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="linux-cmd-5">
+            cat ~/.ssh/id_ed25519.pub
+            <button class="copy-button" data-clipboard-target="#linux-cmd-5">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="linux-cmd-6">
+            ssh -T git@github.com
+            <button class="copy-button" data-clipboard-target="#linux-cmd-6">
+              Copy
+            </button>
+          </code>
+        </li>
+      </ul>
+
+      <h2>Windows</h2>
+      <ul>
+        <li>
+          <code id="win-cmd-1">
+            cd /.ssh
+            <button class="copy-button" data-clipboard-target="#win-cmd-1">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="win-cmd-2">
+            ssh-keygen -t ed25519 -C "email@example.com"
+            <button class="copy-button" data-clipboard-target="#win-cmd-2">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="win-cmd-3">
+            Start-Process ssh-agent -ArgumentList "-s | ssh-add"
+            <button class="copy-button" data-clipboard-target="#win-cmd-3">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="win-cmd-4">
+            ssh-add ~/.ssh/id_ed25519
+            <button class="copy-button" data-clipboard-target="#win-cmd-4">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="win-cmd-5">
+            clip &lt; ~/.ssh/id_ed25519.pub
+            <button class="copy-button" data-clipboard-target="#win-cmd-5">
+              Copy
+            </button>
+          </code>
+        </li>
+
+        <li>
+          <code id="win-cmd-6">
+            ssh -T git@github.com
+            <button class="copy-button" data-clipboard-target="#win-cmd-6">
+              Copy
+            </button>
+          </code>
+        </li>
+      </ul>
+
+      <h2>Change Passphrase</h2>
+      <code id="change-phrase">
+        ssh-keygen -p -f ~/.ssh/id_ed25519
+        <button class="copy-button" data-clipboard-target="#change-phrase">
+          Copy
+        </button>
+      </code>
+
+      <h2>Bibliography</h2>
+      <p>
+        Kudos to <a href="https://www.github.com">GitHub</a> for being such an amazing
+        platform and making awesome tutorials like
+        <a
+          href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/"
+          >this one</a
+        >.
+      </p>
+    </div>
+  </body>
+  <style>
+    :root {
+      --background-color: #1d1f21;
+      --text-color: #e0e0e0;
+      --code-background: #3b3b4b;
+      --code-text: #fff;
+      --accent-color-1: #e57373;
+      --accent-color-2: #a1c4e3;
+      --accent-color-3: #e2a68b;
+      --accent-color-4: #b084ac;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .container {
+      margin: 10px auto;
+      max-width: 1000px;
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--accent-color-1);
+    }
+
+    h2 {
+      color: var(--accent-color-2);
+      margin-top: 20px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    li {
+      margin: 20px 0;
+    }
+
+    li::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    code {
+      background-color: var(--code-background);
+      padding: 10px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+      color: var(--code-text);
+      display: block;
+    }
+
+    code::selection {
+      background-color: var(--accent-color-1);
+      color: var(--background-color);
+    }
+
+    .copy-button {
+      position: sticky;
+      display: inline-block;
+      left: 100%;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      border: none;
+      padding: 5px 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    a {
+      color: var(--accent-color-3);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</html>
